@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @media only screen and (max-width: 600px) {
+            .container {
+                max-width: 100% !important;
+                width: 100% !important;
+                padding: 10px !important;
+            }
+            .content-padding {
+                padding: 16px !important;
+            }
+            h1 { font-size: 24px !important; }
+            h2 { font-size: 20px !important; }
+        }
+    </style>
+</head>
+<body style="margin: 0; padding: 0; background-color: #f4f4f4;">
+<div class="container" style="font-family: Arial, sans-serif; font-size: 16px; max-width: 80%; margin: 0 auto; background-color: #f4f4f4; padding: 20px 0;">
+
+    <div style="background-color: #1a1a2e; padding: 30px 24px; border-radius: 12px 12px 0 0; text-align: center;">
+        <h1 style="color: #ffffff; margin: 0; font-size: 28px;">📋 Resumo Diário</h1>
+        <p style="color: #a0a0b0; margin: 8px 0 0; font-size: 15px;" th:text="${date}"></p>
+    </div>
+
+    <div class="content-padding" style="background-color: #ffffff; padding: 24px; border-bottom: 1px solid #eeeeee;">
+        <h2 style="color: #1a1a2e; border-bottom: 3px solid #e63946; padding-bottom: 8px; font-size: 22px; margin-top: 0;">📰 Notícias do dia</h2>
+        <div th:each="news : ${newsList}">
+            <div style="margin-bottom: 20px; padding: 16px; background-color: #f9f9f9; border-left: 4px solid #e63946; border-radius: 4px;">
+                <strong style="font-size: 18px; color: #1a1a2e; display: block;" th:text="${news.title}"></strong>
+                <p style="color: #444; line-height: 1.6; margin: 10px 0; font-size: 15px;" th:text="${news.summary}"></p>
+                <a th:href="${news.link}" style="color: #e63946; text-decoration: none; font-size: 14px; font-weight: bold;">Ler notícia completa →</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-padding" style="background-color: #ffffff; padding: 24px; border-bottom: 1px solid #eeeeee;">
+        <h2 style="color: #1a1a2e; border-bottom: 3px solid #457b9d; padding-bottom: 8px; font-size: 22px; margin-top: 0;">🎬 Reels</h2>
+        <div th:each="reel : ${reels}">
+            <div style="margin-bottom: 12px; padding: 14px; background-color: #f0f4f8; border-radius: 8px;">
+                <strong style="color: #1a1a2e; font-size: 16px; display: block;" th:text="${reel.title ?: 'Sem título'}"></strong>
+                <a th:href="${reel.url}" style="display: inline-block; margin-top: 10px; padding: 10px 20px; background-color: #457b9d; color: #ffffff; border-radius: 6px; text-decoration: none; font-size: 14px; font-weight: bold;">▶ Ver reel</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-padding" style="background-color: #ffffff; padding: 24px;">
+        <h2 style="color: #1a1a2e; border-bottom: 3px solid #2a9d8f; padding-bottom: 8px; font-size: 22px; margin-top: 0;">📝 Anotações</h2>
+        <div th:each="annotation : ${annotations}">
+            <div style="margin-bottom: 12px; padding: 14px; background-color: #f0faf8; border-left: 4px solid #2a9d8f; border-radius: 4px;">
+                <div style="color: #1a1a2e; font-size: 16px; font-weight: bold; word-wrap: break-word;" th:text="${annotation.content}"></div>
+                <p style="margin: 8px 0 0;">
+                        <span style="background-color: #2a9d8f; color: #ffffff; font-size: 12px; padding: 4px 10px; border-radius: 10px; text-transform: uppercase; letter-spacing: 0.5px;"
+                              th:text="${annotation.slug}"></span>
+                </p>
+            </div>
+        </div>

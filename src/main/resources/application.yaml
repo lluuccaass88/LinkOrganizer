@@ -1,0 +1,27 @@
+spring:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: lucaspalves8@gmail.com
+    password: PASSWORD
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+email:
+  recipient: lucaspalves8@gmail.com
+
+server:
+  port: 8080
+
+discord:
+  token: TOKEN
+  channel-news-name: noticias
+  channel-reels-name: reels
+  channel-annotation-name: anotações
+
+gemini:
+  token:TOKEN
