@@ -28,8 +28,10 @@ public class ProcessorService {
 
   private final EmailService emailService;
 
-  @Scheduled(cron = "0 55 23 * * *")
+  @Scheduled(cron = "${cron.cron-timer}")
   public void start() {
+    log.info("Iniciando a aplicação");
+    System.out.println("Iniciando a aplicação");
     Map<String, List<MessageDTO>> discordResponse = discordService.readDiscord();
     List<MessageDTO> news = discordResponse.get("news");
     List<MessageDTO> reels = discordResponse.get("reels");

@@ -2,8 +2,8 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username: lucaspalves8@gmail.com
-    password: PASSWORD
+    username: ${SPRING_MAIL_USERNAME}
+    password: ${SPRING_MAIL_PASSWORD}
     properties:
       mail:
         smtp:
@@ -12,16 +12,18 @@ spring:
             enable: true
 
 email:
-  recipient: lucaspalves8@gmail.com
+  recipient: ${EMAIL_RECIPIENT}
 
 server:
   port: 8080
 
 discord:
-  token: TOKEN
-  channel-news-name: noticias
-  channel-reels-name: reels
-  channel-annotation-name: anotações
+  token: ${DISCORD_TOKEN}
+  channel-news-name: ${DISCORD_CHANNEL_NEWS_NAME}
+  channel-reels-name: ${DISCORD_CHANNEL_REELS_NAME}
+  channel-annotation-name: ${DISCORD_CHANNEL_ANNOTATION_NAME}
 
+cron:
+  cron-timer: ${CRON_TIMER}
 gemini:
-  token:TOKEN
+  token: ${GEMINI_TOKEN}
