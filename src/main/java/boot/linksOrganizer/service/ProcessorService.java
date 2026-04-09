@@ -28,7 +28,7 @@ public class ProcessorService {
 
   private final EmailService emailService;
 
-  @Scheduled(cron = "${cron.cron-timer}")
+  @Scheduled(cron = "0 05 15 * * *")
   public void start() {
     log.info("Iniciando a aplicação");
     System.out.println("Iniciando a aplicação");
@@ -53,9 +53,6 @@ public class ProcessorService {
     }
 
     emailService.sendDailyEmail(newsProcessed, reellsProcessed, annotationsProcessed);
-
-    // TODO Conectar com a api que envia o email - Tirar Tokens para subir pro github.
-
   }
 
   private List<NewsSumaryDTO> processorNews(List<MessageDTO> news) {
